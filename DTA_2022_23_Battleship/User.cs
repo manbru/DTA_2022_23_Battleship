@@ -10,5 +10,8 @@ namespace DTA_2022_23_Battleship {
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string PasswordHash { get; set; }
+        public string Salt { get; set; }
+        public bool IsAdmin { get; set; }
+        public bool Deactivated { get; set; }
     }
 }

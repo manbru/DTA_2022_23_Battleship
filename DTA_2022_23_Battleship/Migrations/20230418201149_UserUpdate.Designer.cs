@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DTA_2022_23_Battleship.Migrations
 {
-    [DbContext(typeof(BloggingContext))]
-    [Migration("20230417180453_InitialCreate")]
-    partial class InitialCreate
+    [DbContext(typeof(BattleshipContext))]
+    [Migration("20230418201149_UserUpdate")]
+    partial class UserUpdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,7 +52,17 @@ namespace DTA_2022_23_Battleship.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("Deactivated")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Salt")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

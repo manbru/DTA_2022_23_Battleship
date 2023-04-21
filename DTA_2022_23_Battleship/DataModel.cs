@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 
 namespace DTA_2022_23_Battleship {
-    public class BloggingContext : DbContext {
+    public class BattleshipContext : DbContext {
         public DbSet<User> Users { get; set; }
         public DbSet<Match> Matches { get; set; }
 
         public string DbPath { get; }
 
-        public BloggingContext() {
+        public BattleshipContext() {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Join(path, "blogging.db");
+            DbPath = System.IO.Path.Join(path, "battleship.db");
         }
 
         // The following configures EF to create a Sqlite database file in the

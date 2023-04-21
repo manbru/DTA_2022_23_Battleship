@@ -133,7 +133,6 @@ namespace DTA_2022_23_Battleship.Model
         public bool HasSunkenShip(Coordinate coordinate) {
             var seaSquare = this.GetSeaSquare(coordinate);
             if (this.Defeat) {
-                Debug.Write("end");
                 this.GameEnd(this, EventArgs.Empty);
             }
             return seaSquare.HasShip && seaSquare.ShipSquare!.Ship.IsSunk;

@@ -8,16 +8,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
+using System.Diagnostics;
 
 namespace DTA_2022_23_Battleship {
     public partial class LoginScreen : Form {
         public LoginScreen() {
             InitializeComponent();
         }
-
         private void btnLogin_Click(object sender, EventArgs e) {
-            this.Hide();
-            Program.LoginComplete();
+            using (var db = new BattleshipContext()) {
+                var user = db.Users.Where(u => u.UserName == txtUsername.Text)
+                                   .First();
+                if (user.Deactivated) {
+                    if (user.PasswordHash == ComputeSha256Hash(txtPassword.Text + user.Salt)) {
+                        this.Hide();
+                        if (user.IsAdmin) {
+                            Program.ShowAdminMenu();
+                        } else {
+                            Program.StartGame();
+                        }
+                    } else {
+                        lblFeedback.Text = ComputeSha256Hash(txtPassword.Text + user.Salt);
+                    }
+                } else {
+                    lblFeedback.Text = "This user is deactivated!";
+                }
+                
+            }
+        }
+        private static string ComputeSha256Hash(string rawData) {
+            using (var sha256Hash = SHA256.Create()) {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++) {
+                    sb.Append(bytes[i].ToString("x2"));
+                }
+                Debug.Write(sb.ToString());
+                return sb.ToString();
+            }
         }
     }
 }

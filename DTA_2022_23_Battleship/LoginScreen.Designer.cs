@@ -28,6 +28,7 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.lblFeedback = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -73,11 +74,20 @@
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // lblFeedback
+            // 
+            this.lblFeedback.AutoSize = true;
+            this.lblFeedback.Location = new System.Drawing.Point(321, 376);
+            this.lblFeedback.Name = "lblFeedback";
+            this.lblFeedback.Size = new System.Drawing.Size(0, 15);
+            this.lblFeedback.TabIndex = 5;
+            // 
             // LoginScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblFeedback);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
@@ -97,5 +107,6 @@
         private TextBox txtUsername;
         private TextBox txtPassword;
         private Button btnLogin;
+        private Label lblFeedback;
     }
 }
