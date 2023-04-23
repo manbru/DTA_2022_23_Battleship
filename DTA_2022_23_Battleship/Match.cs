@@ -9,8 +9,10 @@ namespace DTA_2022_23_Battleship {
     public class Match {
         public int MatchId { get; set; }
         public int EndTime { get; set; }
-        public User Winner { get; set; }
-        public User Loser { get; set; }
+        public string WinnerName { get; set; }
+        public string LoserName { get; set; }
         public int Turns { get; set; }
+        public int WinnerScore { get; set; }
+        public int LoserScore { get; set;}
     }
 }

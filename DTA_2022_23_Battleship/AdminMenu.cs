@@ -10,8 +10,20 @@ using System.Windows.Forms;
 
 namespace DTA_2022_23_Battleship {
     public partial class AdminMenu : Form {
-        public AdminMenu() {
+        private int userId;
+        public AdminMenu(int userId) {
             InitializeComponent();
+            this.userId = userId;
+        }
+
+        private void btnUserManagement_Click(object sender, EventArgs e) {
+            this.Hide();
+            Program.ShowUserManagement();
+        }
+
+        private void btnGame_Click(object sender, EventArgs e) {
+            this.Hide();
+            Program.StartGame(userId);
         }
     }
 }

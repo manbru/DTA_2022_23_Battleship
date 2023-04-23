@@ -20,19 +20,19 @@ namespace DTA_2022_23_Battleship {
             using (var db = new BattleshipContext()) {
                 var user = db.Users.Where(u => u.UserName == txtUsername.Text)
                                    .First();
-                if (user.Deactivated) {
+                if (!user.Deactivated) {
                     if (user.PasswordHash == ComputeSha256Hash(txtPassword.Text + user.Salt)) {
                         this.Hide();
                         if (user.IsAdmin) {
-                            Program.ShowAdminMenu();
+                            Program.ShowAdminMenu(user.UserId);
                         } else {
-                            Program.StartGame();
+                            Program.StartGame(user.UserId);
                         }
                     } else {
-                        lblFeedback.Text = ComputeSha256Hash(txtPassword.Text + user.Salt);
+                        lblFeedback.Text = "Incorrect username or password";
                     }
                 } else {
-                    lblFeedback.Text = "This user is deactivated!";
+                    lblFeedback.Text = "User is deactivated";
                 }
                 
             }
@@ -45,7 +45,6 @@ namespace DTA_2022_23_Battleship {
                 for (int i = 0; i < bytes.Length; i++) {
                     sb.Append(bytes[i].ToString("x2"));
                 }
-                Debug.Write(sb.ToString());
                 return sb.ToString();
             }
         }

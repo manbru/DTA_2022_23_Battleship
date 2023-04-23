@@ -27,12 +27,10 @@ namespace DTA_2022_23_Battleship {
             };
 
             game.BoardPlayer1.GameEnd += (sender, args) => {
-                Debug.WriteLine("1end");
                 this.label2.Text = "Player2 has won the game";
                 this.label3.Text = "Player1 has lost the game";
             };
             game.BoardPlayer2.GameEnd += (sender, args) => {
-                Debug.WriteLine("2end");
                 this.label3.Text = "Player1 has won the game";
                 this.label2.Text = "Player2 has lost the game";
             };

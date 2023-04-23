@@ -151,22 +151,5 @@ namespace DTA_2022_23_Battleship.Model
         public event EventHandler? IsYourTurnChanged;
         public event EventHandler<AfterShotEventArgs>? AfterShot;
         public event EventHandler GameEnd;
-
-        /*public void PrintBoard() {
-            Debug.WriteLine("\n--------------------");
-            for (int r = 0; r < this.Size; r++) {
-                Debug.Write("|");
-                for (int c = 0; c < this.Size; c++) {
-                    if (this.internalBoard[r, c].HasShip) {
-                        Debug.Write("X");
-                    } else {
-                        Debug.Write(" ");
-                    }
-                    Debug.Write("|");
-                }
-                Debug.WriteLine("\n--------------------");
-            }
-
-        }*/
     }
 }

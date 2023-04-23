@@ -13,5 +13,7 @@ namespace DTA_2022_23_Battleship {
         public string Salt { get; set; }
         public bool IsAdmin { get; set; }
         public bool Deactivated { get; set; }
+        public int BirthYear { get; set; }
+        public List<Match> Matches { get; set; }
     }
 }
