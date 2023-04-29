@@ -202,8 +202,8 @@ namespace DTA_2022_23_Battleship.Model
                     LoserScore = loserscore,
                     Turns = turns,
                 });
+                db.SaveChanges();
             }
-            Debug.Write("save");
         }
     }
 }

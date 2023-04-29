@@ -42,8 +42,10 @@
             this.gridUsers.Name = "gridUsers";
             this.gridUsers.ReadOnly = true;
             this.gridUsers.RowTemplate.Height = 25;
+            this.gridUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridUsers.Size = new System.Drawing.Size(450, 397);
             this.gridUsers.TabIndex = 0;
+            this.gridUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridUsers_CellContentClick);
             // 
             // btnAdd
             // 
@@ -53,6 +55,7 @@
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add User";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // gridMatches
             // 
@@ -72,6 +75,7 @@
             this.btnMatches.TabIndex = 3;
             this.btnMatches.Text = "Hide Matches";
             this.btnMatches.UseVisualStyleBackColor = true;
+            this.btnMatches.Click += new System.EventHandler(this.btnMatches_Click);
             // 
             // btnUpdate
             // 
@@ -81,6 +85,7 @@
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Update User";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // UserManagement
             // 

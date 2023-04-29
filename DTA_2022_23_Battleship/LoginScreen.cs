@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Security.Cryptography;
 using System.Diagnostics;
 
 namespace DTA_2022_23_Battleship {
@@ -18,34 +17,26 @@ namespace DTA_2022_23_Battleship {
         }
         private void btnLogin_Click(object sender, EventArgs e) {
             using (var db = new BattleshipContext()) {
-                var user = db.Users.Where(u => u.UserName == txtUsername.Text)
+                try {
+                    var user = db.Users.Where(u => u.UserName == txtUsername.Text)
                                    .First();
-                if (!user.Deactivated) {
-                    if (user.PasswordHash == ComputeSha256Hash(txtPassword.Text + user.Salt)) {
-                        this.Hide();
-                        if (user.IsAdmin) {
-                            Program.ShowAdminMenu(user.UserId);
+                    if (!user.Deactivated) {
+                        if (user.PasswordHash == Cryptography.GenerateHash(txtPassword.Text + user.Salt)) {
+                            this.Hide();
+                            if (user.IsAdmin) {
+                                Program.ShowAdminMenu(user.UserId);
+                            } else {
+                                Program.StartGame(user.UserId);
+                            }
                         } else {
-                            Program.StartGame(user.UserId);
+                            lblFeedback.Text = "Incorrect username or password";
                         }
                     } else {
-                        lblFeedback.Text = "Incorrect username or password";
+                        lblFeedback.Text = "User is deactivated";
                     }
-                } else {
-                    lblFeedback.Text = "User is deactivated";
+                } catch {
+                    lblFeedback.Text = "Incorrect username or password";
                 }
-                
-            }
-        }
-        private static string ComputeSha256Hash(string rawData) {
-            using (var sha256Hash = SHA256.Create()) {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
-
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++) {
-                    sb.Append(bytes[i].ToString("x2"));
-                }
-                return sb.ToString();
             }
         }
     }
