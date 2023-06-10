@@ -35,6 +35,7 @@
             this.btnSinglePlayer.TabIndex = 0;
             this.btnSinglePlayer.Text = "Single Player";
             this.btnSinglePlayer.UseVisualStyleBackColor = true;
+            this.btnSinglePlayer.Click += new System.EventHandler(this.btnSinglePlayer_Click);
             // 
             // btnMultiplayer
             // 

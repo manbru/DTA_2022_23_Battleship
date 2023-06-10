@@ -37,5 +37,13 @@ namespace DTA_2022_23_Battleship {
             var management = new UserManagement();
             management.Show();
         }
+        public static void ShowPlayersForm(int userId) {
+            var players = new PlayersForm(userId);
+            players.Show();
+        }
+        public static void ShowDifficultyForm(int userId) {
+            var difficulty = new DifficultyForm(userId);
+            difficulty.Show();
+        }
     }
 }

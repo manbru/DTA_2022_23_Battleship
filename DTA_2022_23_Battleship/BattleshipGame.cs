@@ -73,7 +73,7 @@ namespace DTA_2022_23_Battleship {
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e) {
             if (this.radioButton1.Checked) {
-                this.game.SetPlayer1Strategy(Model.Strategies.PlayerStrategy.Manual);
+                this.game.SetPlayer1Strategy(Model.Strategies.PlayerStrategy.Stupid);
             }
         }
 

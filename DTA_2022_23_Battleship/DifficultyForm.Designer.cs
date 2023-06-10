@@ -38,6 +38,7 @@
             this.btnEasy.TabIndex = 0;
             this.btnEasy.Text = "Easy";
             this.btnEasy.UseVisualStyleBackColor = true;
+            this.btnEasy.Click += new System.EventHandler(this.btnEasy_Click);
             // 
             // lblDifficulty
             // 

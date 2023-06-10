@@ -26,7 +26,7 @@ namespace DTA_2022_23_Battleship {
                             if (user.IsAdmin) {
                                 Program.ShowAdminMenu(user.UserId);
                             } else {
-                                Program.StartGame(user.UserId);
+                                Program.ShowPlayersForm(user.UserId);
                             }
                         } else {
                             lblFeedback.Text = "Incorrect username or password";
